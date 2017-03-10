@@ -10,16 +10,9 @@ function fetchAsset(assetItem){
               myFunction(myArr);
           }
       };
-      function myFunction(obj) {
-        $("#fetchAsset > tbody").empty()             
-          for (var i = 0; i < obj.length; i++) {
-              addRow(obj[i].assetName, obj[i].assetType, obj[i].assetClass);
-          }
-      }
-
-      function addRow(assetName, assetType, assetClass)
-      {
-        var row = "<tr><td>"+ assetName + "</td><td>" + assetType + "</td><td>" + assetClass + "</td></tr>";
-        $("#fetchAsset > tbody").append(row)
+       function myFunction(obj) {             
+          document.getElementById("oneAsset").innerHTML = "Asset Name : " + obj.assetName + '<br><br>Asset Type : ' + obj.assetType 
+          + '<br><br>Asset Class : ' +  obj.assetClass;
+          
       }
 }

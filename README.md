@@ -1,17 +1,17 @@
 # Asset-Store
 Planet Labs Coding Challenge
 
-Installation Requirements
+#Installation Requirements
 
-install pip
-sudo pip install Flask
-sudo pip install mongoengine
+1. install pip
+2. sudo pip install Flask
+3. sudo pip install mongoengine
 
-to run flask server 
+#To run flask server 
 1. python app.py
 2. Open browser and type url - http://localhost:5000/ and press enter
 
-API Details
+#API Details
 
 1. API to create an asset
 

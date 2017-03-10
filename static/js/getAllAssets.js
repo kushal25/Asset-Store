@@ -9,6 +9,15 @@ function getAllAssets(){
               console.log(myArr);          
               myFunction(myArr);
           }
+          else if(xmlhttp.status = 400)
+          {
+            var obj = JSON.parse(xmlhttp.responseText); 
+            alert(obj.response);
+          }
+          else
+          {
+            alert("Server is Busy. Try Again Later");
+          }
       };
       function myFunction(obj) {
         $("#getAllAssets > tbody").empty()             

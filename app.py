@@ -21,19 +21,19 @@ def createAsset():
 				a.save()
 				return a.to_json()
 			else:
-				return jsonify({'response' : 'Incorrect Request Class'})
+				return jsonify({'response' : 'Incorrect Request Class'}), 400
 		elif(_assetType=="antenna"):
 			if(_assetClass =="dish" or _assetClass=="yagi"):	
 				a = Asset(assetName=_assetName,assetType= _assetType, assetClass=_assetClass)
 				a.save()
 				return a.to_json()
 			else:
-				return jsonify({'response' : 'Incorrect Request Class'})
+				return jsonify({'response' : 'Incorrect Request Class'}), 400
 		else:
-			return jsonify({'response' : 'Incorrect Request Type'})			
+			return jsonify({'response' : 'Incorrect Request Type'}), 400			
 
 	else:
- 		return jsonify({'commandResponse' : 'Cannot Find JSON type'})
+ 		return jsonify({'response' : 'Cannot Find JSON type'}), 400
 
 
 @app.route('/getOneAsset/<string:name>', methods=['GET'])
@@ -42,7 +42,7 @@ def getOneAsset(name):
 	if len(resp)>0:
 		return resp[0].to_json()
 	else :
-		return jsonify({'response' : "No Asset Found"})
+		return jsonify({'response' : "No Asset Found"}), 400
 
 
 @app.route('/getAllAssets', methods=['GET'])
@@ -51,7 +51,7 @@ def getAllAssets():
 	if len(resp)>0:
 		return resp.to_json();
 	else :
-		return jsonify({'response' : "No Assets Found"})
+		return jsonify({'response' : "No Assets Found"}), 400
 
 if __name__ == "__main__":
 	app.run(debug=True)

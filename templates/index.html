@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Planet Labs Coding Challenge</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+   <script type="text/javascript" src="../static/js/index.js"></script>
+   <script type="text/javascript" src="../static/js/oneAsset.js"></script> 
+   <script type="text/javascript" src="../static/js/getAllAssets.js"></script>    
+  <script type="text/javascript">
+  var satellite = '<option selected="selected" value=""> Choose Asset Class </option><option value="dove">Dove</option><option value="rapideye">Rapid Eye</option>';
+  var antenna = '<option selected="selected" value=""> Choose Asset Class </option><option value="dish">Dish</option><option value="yagi">Yagi</option>';
+
+$(document).ready(function(){
+    $("select#assetType").on('change',function(){
+        if($(this).val()=="satellite"){
+            $("select#assetClass").html(satellite);
+        }else if($(this).val()=="antenna"){
+            $("select#assetClass").html(antenna);
+        }
+    });
+});
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Planet Labs Coding Challenge</h2>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Create an Asset</a></li>
+    <li><a data-toggle="tab" href="#menu1">Search for One Asset</a></li>
+    <li><a data-toggle="tab" href="#getAllAssets">Get All Assets</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>Create an Asset</h3><br>
+      <form class="form-signin" name="myForm">
+        <input type="text" name="inputAssetName" id="inputAssetName" class="form-control" placeholder="Asset Name" required autofocus/><br><br>
+       
+          <select class="assetType" id="assetType" name="assetType">
+            <option selected="selected" value=""> Choose Asset Type </option>
+            <option value="satellite"> Satellite </option>
+            <option value="antenna"> Antenna </option>
+          </select><br><br>
+
+
+          <select class="assetClass" id="assetClass" name="assetClass">
+            <option selected="selected" value=""> Choose Asset Class </option>
+          </select><br><br>
+                       
+          <button id="createAssetButton" class="btn btn-primary" type="button" src="index.js" onclick="createAsset()">Create</button><br><br>
+
+         <div id="createAsset"></div>
+             
+      </form>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Search for One Asset</h3>
+      
+      <input type="text" name="inputOneAssetName" id="inputOneAssetName" class="form-control" placeholder="Enter Asset Name" required autofocus/><br><br>
+       <button id="fetchAssetButton" class="btn btn-primary" type="button" src="oneAsset.js" onclick="fetchAsset(document.getElementById('inputOneAssetName').value)">Fetch Asset</button><br><br>
+          <table id="fetchAsset" class="table table-hover">
+            <thead>
+              <tr>
+                  <th>Asset Name</th>
+                  <th>Asset Type</th>
+                  <th>Asset Class</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+        </table> 
+
+    </div>
+
+    <div id="getAllAssets" class="tab-pane fade">
+      <h3>Get All Assets</h3>
+        <br><br><button id="getAllAssetsButton" class="btn btn-primary" type="button" src="getAllAssets.js" onclick="getAllAssets()">Get All Assets</button><br><br>
+        <table id="getAllAssets" class="table table-hover">
+            <thead>
+              <tr>
+                  <th>Asset Name</th>
+                  <th>Asset Type</th>
+                  <th>Asset Class</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+        </table> 
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

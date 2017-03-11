@@ -15,7 +15,7 @@ Planet Labs Coding Challenge
 
 #API Details
 
-1. API to create an asset
+# API to create an asset
 
 POST - http://localhost:5000/createAsset
 
@@ -25,10 +25,10 @@ request paramters - {
 	"assetClass" : "dove"
 }
 
-2. API to retrieve only one asset
+# API to retrieve only one asset
 
-GET - http://localhost:5000/getOneAsset/<asset-name>
+GET - http://localhost:5000/getOneAsset/asset-name
 
-3. API to get all assets
+# API to get all assets
 
 GET - http://localhost:5000/getAllAssets

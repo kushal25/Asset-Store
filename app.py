@@ -18,15 +18,21 @@ def createAsset():
 		if(_assetType == "satellite"):
 			if(_assetClass =="dove" or _assetClass=="rapideye"):	
 				a = Asset(assetName=_assetName,assetType= _assetType, assetClass=_assetClass)
-				a.save()
-				return a.to_json()
+				try:
+					a.save()
+					return a.to_json()
+				except Exception as e:
+					return jsonify({'response' : e.message}), 400
 			else:
 				return jsonify({'response' : 'Incorrect Request Class'}), 400
 		elif(_assetType=="antenna"):
 			if(_assetClass =="dish" or _assetClass=="yagi"):	
 				a = Asset(assetName=_assetName,assetType= _assetType, assetClass=_assetClass)
-				a.save()
-				return a.to_json()
+				try:
+					a.save()
+					return a.to_json()
+				except Exception as e:
+					return jsonify({'response' : e.message}), 400
 			else:
 				return jsonify({'response' : 'Incorrect Request Class'}), 400
 		else:

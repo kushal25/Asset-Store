@@ -4,8 +4,10 @@ Planet Labs Coding Challenge
 #Installation Requirements
 
 1. install pip
-2. sudo pip install Flask
-3. sudo pip install mongoengine
+2. install python
+3. install mongoDB and start the mongo service
+4. sudo pip install Flask
+5. sudo pip install mongoengine
 
 #To run flask server 
 1. python app.py

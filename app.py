@@ -15,28 +15,31 @@ def createAsset():
 		_assetType = json.get("assetType").strip()
 		_assetClass = json.get("assetClass").strip()
 
-		if(_assetType == "satellite"):
-			if(_assetClass =="dove" or _assetClass=="rapideye"):	
-				a = Asset(assetName=_assetName,assetType= _assetType, assetClass=_assetClass)
-				try:
-					a.save()
-					return a.to_json()
-				except Exception as e:
-					return jsonify({'response' : e.message}), 400
+		if _assetName and _assetType and _assetClass:
+			if(_assetType == "satellite"):
+				if(_assetClass =="dove" or _assetClass=="rapideye"):	
+					a = Asset(assetName=_assetName,assetType= _assetType, assetClass=_assetClass)
+					try:
+						a.save()
+						return a.to_json()
+					except Exception as e:
+						return jsonify({'response' : e.message}), 400
+				else:
+					return jsonify({'response' : 'Incorrect Request Class'}), 400
+			elif(_assetType=="antenna"):
+				if(_assetClass =="dish" or _assetClass=="yagi"):	
+					a = Asset(assetName=_assetName,assetType= _assetType, assetClass=_assetClass)
+					try:
+						a.save()
+						return a.to_json()
+					except Exception as e:
+						return jsonify({'response' : e.message}), 400
+				else:
+					return jsonify({'response' : 'Incorrect Request Class'}), 400
 			else:
-				return jsonify({'response' : 'Incorrect Request Class'}), 400
-		elif(_assetType=="antenna"):
-			if(_assetClass =="dish" or _assetClass=="yagi"):	
-				a = Asset(assetName=_assetName,assetType= _assetType, assetClass=_assetClass)
-				try:
-					a.save()
-					return a.to_json()
-				except Exception as e:
-					return jsonify({'response' : e.message}), 400
-			else:
-				return jsonify({'response' : 'Incorrect Request Class'}), 400
+				return jsonify({'response' : 'Incorrect Request Type'}), 400
 		else:
-			return jsonify({'response' : 'Incorrect Request Type'}), 400			
+			return jsonify({'response' : 'Fields Missing. Please Enter All Details'}), 400
 
 	else:
  		return jsonify({'response' : 'Cannot Find JSON type'}), 400
